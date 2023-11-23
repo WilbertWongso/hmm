@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TugasPassword_233401013</title>
+</head>
+    <script>
+        function submit(){
+	const dpn = document.getElementById("depan").value;
+	const blkng = document.getElementById("belakang").value;
+	const email = document.getElementById("email").value;
+
+	if(dpn == "" || blkng == "" || email == "") {
+	window.alert("Satu/Beberapa kolom kosong, silahkan mengisi kolom yang masih kosong");
+	return;
+	}
+
+	if (/^(.*@.*\.com)$/.test(email)){
+	window.alert("Email valid");
+	const month = ["januari","febuari","maret","april","mei","juni", "juli", "september","oktober","november","desember"];
+	let result = "";
+	const arrChar = dpn.split("");
+	let filtered = [];
+	for (let i = arrChar.length - 1; i >= 0; i--) {
+		if (i % 2 == 0){
+            filtered.push(arrChar[i].toUpperCase());
+        }
+        else{filtered.push(arrChar[i].toLowerCase());
+        }
+    }
+    result += filtered.join("");
+    const Gmail = email.search(/@.*.com/);
+    const Yahoo = email.search(/(.com)$/);
+    result += email.slice(Gmail+1, Yahoo);
+    result += month[new Date().getMonth()];
+    result += blkng.length;
+    window.alert(result);
+    }
+    else{
+        window.alert("email tidak valid");
+    }
+}
+    </script>
+<body>
+    <center>
+        <h1> Password Generator </h1>
+    </center>
+    <br>
+        Nama Depan
+        <input type="text" id = "depan"><br><br>
+        Nama Belakang
+        <input type="text" id = "belakang"><br><br>
+        Email
+        <input type ="email" id = "email"><br><br>
+        <button onclick = "submit()">Submit</button>
+</body>
+</html>
